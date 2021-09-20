@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 00:27:29 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/21 01:18:40 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/21 01:13:09 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/21 01:18:07 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-int	main(int ac, char **av)
+char	ft_strlen(char *src)
 {
 	int	i;
 
-	while (--ac > 0)
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*copy;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(src);
+	copy = (char *)malloc(sizeof(char) * len + 1);
+	while (src[i] != '\0')
 	{
-		i = 0;
-		while (av[ac][i] != '\0')
-			write(1, &av[ac][i++], 1);
-		write(1, "\n", 1);
+		copy[i] = src[i];
+		i++;
 	}
-	return (0);
+	copy[i] = '\0';
+	return (copy);
 }

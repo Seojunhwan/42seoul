@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 00:35:14 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/21 01:11:28 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/21 01:19:27 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
-		return (s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
 }
 
 void	ft_sort(int ac, char **av)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*tmp;
 
 	i = 1;
