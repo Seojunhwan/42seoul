@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 18:34:52 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 21:22:21 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/21 00:05:25 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/21 00:19:55 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_find_next_prime(int nb)
-{
-	i = nb;
-	while (i)
-	{
+#include <unistd.h>
 
+int	main(int ac, char **av)
+{
+	ac--;
+	while (av[0][ac])
+		write(1, &av[0][ac++], 1);
+	write(1, "\n", 1);
+	return (0);
 }
