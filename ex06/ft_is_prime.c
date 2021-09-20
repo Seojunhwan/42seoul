@@ -6,12 +6,24 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:49:08 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 17:57:20 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/20 18:22:23 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_is_prime(int nb)
 {
+	int count;
+	int i;
 
+	i = 1;
+	count = 0;
+	while (i <= nb)
+	{
+		if (nb % i == 0)
+			count++;
+		i++;
+	}
+	if (count == 2)
+		return (1);
+	return (0);
+}
