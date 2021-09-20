@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 17:07:02 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 20:25:07 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/20 18:34:52 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/20 20:25:22 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_find_next_prime(int nb)
 {
-	long long	square;
 
-	if (nb <= 0)
-		return (0);
-	square = 1;
-	while (square * square < nb)
-		square++;
-	if (square * square == nb)
-		return (square);
-	return (0);
 }
