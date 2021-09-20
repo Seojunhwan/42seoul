@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 11:03:58 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 16:50:13 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/20 17:07:02 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/20 17:48:39 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	fibo(int index, int a, int b)
+int	ft_sqrt(int nb)
 {
-	if (index == 0)
-		return (a);
-	if (index == 1)
-		return (b);
-	return (fibo(index - 1, b, a + b));
-}
+	long long square;
 
-int	ft_fibonacci(int index)
-{
-	if (index < 0)
-		return (-1);
-	return (fibo(index, 0, 1));
+	if (nb <= 0)
+		return (0);
+	square = 1;
+	while (square * square < nb)
+		square++;
+	if (square * square == nb)
+		return (square);
+	return (0);
 }

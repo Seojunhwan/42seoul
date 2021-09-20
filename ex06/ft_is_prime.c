@@ -1,27 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 11:03:58 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 16:50:13 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/20 17:49:08 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/20 17:57:20 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	fibo(int index, int a, int b)
-{
-	if (index == 0)
-		return (a);
-	if (index == 1)
-		return (b);
-	return (fibo(index - 1, b, a + b));
-}
+#include <stdio.h>
 
-int	ft_fibonacci(int index)
+int	ft_is_prime(int nb)
 {
-	if (index < 0)
-		return (-1);
-	return (fibo(index, 0, 1));
-}
+
