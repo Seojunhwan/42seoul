@@ -6,11 +6,14 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 18:34:52 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/20 20:25:22 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/20 21:22:21 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_find_next_prime(int nb)
 {
+	i = nb;
+	while (i)
+	{
 
 }
