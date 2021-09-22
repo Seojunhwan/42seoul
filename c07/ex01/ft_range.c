@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 01:22:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/22 00:06:09 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/22 12:32:24 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	*ft_range(int min, int max)
 		return (0);
 	while (i < len)
 	{
-		result[i] = min++;
+		result[i] = min;
 		i++;
+		min++;
 	}
 	return (result);
 }

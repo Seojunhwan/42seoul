@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 00:51:28 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/22 02:31:50 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/22 12:47:07 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	*ft_strcat(char *dest, char *src)
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
+	int			i;
+	long long	len;
 	char		*result;
 	char		*temp;
-	long long	len;
-	int			i;
 
 	if (size <= 0)
 	{
