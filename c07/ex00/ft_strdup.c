@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 01:13:09 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/21 01:18:07 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/23 10:53:24 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_strdup(char *src)
 	i = 0;
 	len = ft_strlen(src);
 	copy = (char *)malloc(sizeof(char) * len + 1);
+	if (!copy)
+		return (NULL);
 	while (src[i] != '\0')
 	{
 		copy[i] = src[i];

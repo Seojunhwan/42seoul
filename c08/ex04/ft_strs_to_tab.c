@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:48:10 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/22 16:06:04 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/23 15:21:05 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		result[i].copy = (char *)malloc(result[i].size + 1);
 		ft_strcpy(result[i].str, av[i]);
 		ft_strcpy(result[i].copy, av[i]);
-		++i;
+		i++;
 	}
 	result[i].str = 0;
 	return (result);

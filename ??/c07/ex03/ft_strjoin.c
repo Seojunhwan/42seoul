@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 00:51:28 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/25 17:53:17 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/22 12:47:07 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long long	ft_strlen(char *str)
 
 	i = 0;
 	while (str[i])
-		i++;
+		++i;
 	return (i);
 }
 

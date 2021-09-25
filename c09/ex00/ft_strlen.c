@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 01:22:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/25 11:42:13 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/25 23:59:57 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/26 00:00:23 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_range(int min, int max)
+int	ft_strlen(char *str)
 {
-	int	*result;
-	int	len;
 	int	i;
 
 	i = 0;
-	len = max - min;
-	if (min >= max)
-		return (0);
-	result = (int *)malloc(sizeof(int) * len);
-	if (!result)
-		return (NULL);
-	while (i < len)
-	{
-		result[i] = min;
+	while (str[i])
 		i++;
-		min++;
-	}
-	return (result);
+	return (i);
 }

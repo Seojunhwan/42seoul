@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 01:22:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/25 11:42:13 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/21 23:58:08 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/22 12:40:27 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	*ft_range(int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	*result;
-	int	len;
 	int	i;
+	int	result;
+	int	*temp;
 
 	i = 0;
-	len = max - min;
 	if (min >= max)
 		return (0);
-	result = (int *)malloc(sizeof(int) * len);
-	if (!result)
-		return (NULL);
-	while (i < len)
+	result = max - min;
+	*range = (int *)malloc(sizeof(int) * result);
+	if (!*range)
+		return (-1);
+	temp = *range;
+	while (min < max)
 	{
-		result[i] = min;
-		i++;
+		*temp = min;
+		temp++;
 		min++;
 	}
 	return (result);

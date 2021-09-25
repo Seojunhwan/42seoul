@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 22:30:09 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/25 22:33:28 by junseo           ###   ########.fr       */
+/*   Updated: 2021/09/22 23:00:01 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,7 @@ void	put_str(char *result, int i, int j, char *str)
 
 	k = 0;
 	while (j < i)
-	{
-		result[k] = str[j];
-		k++;
-		j++;
-	}
+		result[k++] = str[j++];
 	result[k] = '\0';
 }
 

@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 01:22:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/09/25 11:42:13 by junseo           ###   ########.fr       */
+/*   Created: 2021/09/21 01:13:09 by junseo            #+#    #+#             */
+/*   Updated: 2021/09/21 01:18:07 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	*ft_range(int min, int max)
+char	ft_strlen(char *src)
 {
-	int	*result;
-	int	len;
 	int	i;
 
 	i = 0;
-	len = max - min;
-	if (min >= max)
-		return (0);
-	result = (int *)malloc(sizeof(int) * len);
-	if (!result)
-		return (NULL);
-	while (i < len)
-	{
-		result[i] = min;
+	while (src[i])
 		i++;
-		min++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*copy;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(src);
+	copy = (char *)malloc(sizeof(char) * len + 1);
+	while (src[i] != '\0')
+	{
+		copy[i] = src[i];
+		i++;
 	}
-	return (result);
+	copy[i] = '\0';
+	return (copy);
 }
