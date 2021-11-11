@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 23:10:58 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/09 20:17:39 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/09 14:40:39 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/09 23:12:08 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *str, int c)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else
-		return (0);
+	const char *ptr;
+	while (*str != '\0')
+	{
+		if (*str == c)
+			return (str);
+		str++;
+	}
+	return (0);
+}
+
+int main()
+{
+	char str[]={"hi i am junhwan"};
+	ft_strchr(str, 'a');
 }

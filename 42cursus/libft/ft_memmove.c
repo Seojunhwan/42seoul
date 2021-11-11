@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 23:10:58 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/09 20:17:39 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/09 18:30:40 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/09 23:13:39 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else
-		return (0);
+	unsigned char *dest_ptr;
+
+	dest_ptr = (unsigned char *)dest;
+	
 }

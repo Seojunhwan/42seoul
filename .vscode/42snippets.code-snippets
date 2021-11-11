@@ -1,0 +1,27 @@
+{
+  "int type function": {
+    "prefix": "ft_int",
+    "body": ["int\tft_$1($2)", "{", "\t$3", "\treturn ();", "}"],
+    "description": "create a function with prefix that return int type"
+  },
+  "char type function": {
+    "prefix": "ft_char",
+    "body": ["char\tft_$1($2)", "{", "\t$3", "\treturn ();", "}"],
+    "description": "create a function with prefix that return char type"
+  },
+  "void type function": {
+    "prefix": "ft_void",
+    "body": ["void\tft_$1($2)", "{", "\t$3", "}"],
+    "description": "create a void function with prefix"
+  },
+  "string type function": {
+    "prefix": "ft_str",
+    "body": ["char\t*ft_$1($2)", "{", "\t$3", "\treturn ();", "}"],
+    "description": "create a function with prefix that return string type"
+  },
+  "pointer type function": {
+    "prefix": "ft_ptr",
+    "body": ["void\t*ft_$1($2)", "{", "\t$3", "\treturn ();", "}"],
+    "description": "create a function with prefix that return pointer type"
+  }
+}
