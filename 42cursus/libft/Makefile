@@ -1,27 +1,49 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+FILES		=	ft_strlen \
+				ft_strlcpy \
+				ft_strlcat \
+				ft_strchr \
+				ft_strrchr \
+				ft_isalpha \
+				ft_isdigit \
+				ft_isalnum \
+				ft_isascii \
+				ft_isprint \
+				ft_toupper \
+				ft_tolower \
+				ft_memset \
+				ft_strncmp \
+				ft_bzero \
+				ft_memcpy \
+				ft_memmove 
 
-SRCDIR = srcs
-INC = libft.h
+DIR_OBJS	= ./
+OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
+DIR_SRCS	= ./
+SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
 
-NAME = libft.a
-SOURCES = $(SRCDIR)/ft_putchar.c $(SRCDIR)/ft_swap.c $(SRCDIR)/ft_putstr.c $(SRCDIR)/ft_strlen.c $(SRCDIR)/ft_strcmp.c
-OBJECTS = $(SOURCES:.c=.o)
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
 
-all: $(NAME)
+AR			= ar crs
+RM			= rm -f
 
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@ -I $(INC)
+NAME		= libft.a
 
-$(NAME): $(OBJECTS)
-	ar crs $@ $(OBJECTS)
+.c.o:		$(SRCS)
+			$(CC) $(CFLAGS) -c -o $@ $<
 
-.PHONY: clean fclean all re bonus
+all:		$(NAME)
 
-clean:
-	rm -rf $(OBJECTS)
+$(NAME):	$(OBJS)
+			$(AR) $(NAME) $(OBJS)
 
-fclean: clean
-	rm -rf $(NAME)
 
-re: fclean all
+clean: 
+			$(RM) $(OBJS)
+
+fclean: 	clean
+			$(RM) $(NAME)
+
+re: 		fclean all
+
+.PHONY:		all clean fclean re

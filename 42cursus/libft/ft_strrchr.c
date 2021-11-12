@@ -6,28 +6,24 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 15:33:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/09 23:13:35 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/12 14:34:04 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *str, int c)
+#include "libft.h"
+
+char	*ft_strrchr(char *str, int c)
 {
-	int i;
-	int locate;
+	int	i;
 
 	i = 0;
-	locate = 0;
 	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			locate = i;
 		i++;
+	while (0 <= i)
+	{	
+		if (str[i] == c)
+			return (&str[i]);
+		i--;
 	}
-	return (&str[locate]);
-}
-#include <stdio.h>
-int main()
-{
-	printf("%s", ft_strrchr("hihi jm junhwan", 'j'));
-	return 0;
+	return (NULL);
 }

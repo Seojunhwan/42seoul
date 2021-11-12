@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:35 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/11 14:01:53 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/11 14:18:17 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isalpha(c) && ft_isdigit(c))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 14:53:02 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/12 01:44:34 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/12 14:34:54 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/12 15:04:46 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	len;
+	const unsigned char	*s1_temp;
+	const unsigned char	*s2_temp;
+	size_t				i;
 
-	if (!src)
+	if (n == 0)
 		return (0);
-	len = ft_strlen(src);
 	i = 0;
-	if (dstsize == 0)
-		return (len);
-	while (i < dstsize - 1 && src[i] != '\0')
+	s1_temp = (const unsigned char *)s1;
+	s2_temp = (const unsigned char *)s2;
+	while (*s1_temp != '\0' && *s2_temp != '\0' && i < n)
 	{
-		dst[i] = src[i];
+		if (*s1_temp != *s2_temp)
+			return (*s1_temp - *s2_temp);
+		s1_temp++;
+		s2_temp++;
 		i++;
 	}
-	dst[i] = '\0';
-	return (len);
+	if (i == n)
+	{
+		s1_temp--;
+		s2_temp--;
+	}
+	return (*s1_temp - *s2_temp);
 }

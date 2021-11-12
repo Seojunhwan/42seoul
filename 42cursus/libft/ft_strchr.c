@@ -6,24 +6,21 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 14:40:39 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/09 23:12:08 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/12 00:30:04 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strchr(const char *str, int c)
 {
-	const char *ptr;
 	while (*str != '\0')
 	{
 		if (*str == c)
-			return (str);
+			return ((char *)str);
 		str++;
 	}
-	return (0);
-}
-
-int main()
-{
-	char str[]={"hi i am junhwan"};
-	ft_strchr(str, 'a');
+	if (*str == c)
+		return ((char *)str);
+	return (NULL);
 }
