@@ -12,8 +12,14 @@ FILES		=	ft_strlen \
 				ft_tolower \
 				ft_memset \
 				ft_strncmp \
+				ft_memchr \
 				ft_bzero \
 				ft_memcpy \
+				ft_memcmp \
+				ft_strnstr \
+				ft_atoi \
+				ft_calloc \
+				ft_strdup \
 				ft_memmove 
 
 DIR_OBJS	= ./

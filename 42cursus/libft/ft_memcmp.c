@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 14:34:54 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/12 23:12:52 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/12 15:18:10 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/12 22:40:50 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*s1_temp;
-	const unsigned char	*s2_temp;
-	size_t				i;
+	const unsigned char	*s1_ptr;
+	const unsigned char	*s2_ptr;
 
 	if (n == 0)
 		return (0);
-	i = 0;
-	s1_temp = (const unsigned char *)s1;
-	s2_temp = (const unsigned char *)s2;
-	while (*s1_temp != '\0' && *s2_temp != '\0' && i < n)
+	s1_ptr = (unsigned char *)s1;
+	s2_ptr = (unsigned char *)s2;
+	while (n)
 	{
-		if (*s1_temp != *s2_temp)
-			return (*s1_temp - *s2_temp);
-		s1_temp++;
-		s2_temp++;
-		i++;
+		if (*s1_ptr != *s2_ptr)
+			return ((int)(*s1_ptr - *s2_ptr));
+		s1_ptr++;
+		s2_ptr++;
+		n--;
 	}
-	if (i == n)
-	{
-		s1_temp--;
-		s2_temp--;
-	}
-	return (*s1_temp - *s2_temp);
+	return (0);
 }
