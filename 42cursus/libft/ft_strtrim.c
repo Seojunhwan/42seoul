@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 21:32:41 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/14 11:55:21 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/13 23:29:14 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/14 16:38:41 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
-	size_t	i;
-	size_t	str_len;
+	size_t	start;
+	size_t	end;
 
-	if (!s)
+	if (!s1 || !set)
 		return (NULL);
-	str_len = ft_strlen(s);
-	if (str_len <= start)
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] != '\0' && ft_strchr(set, s1[start]))
+		start++;
+	while (start < end && ft_strchr(set, s1[end]))
+		end--;
+	if (start >= end)
 		return (ft_strdup(""));
-	if (len >= str_len - start)
-		len = str_len - start;
-	result = (char *)malloc(sizeof(char) * len + 1);
+	result = (char *)malloc(sizeof(char) * (end - start) + 2);
 	if (result == NULL)
 		return (NULL);
-	i = 0;
-	while (s[start] != '\0' && i < len)
-	{
-		result[i] = s[start];
-		i++;
-		start++;
-	}
-	result[i] = '\0';
+	ft_strlcpy(result, &s1[start], (end - start) + 2);
 	return (result);
 }

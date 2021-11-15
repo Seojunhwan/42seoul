@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 21:32:41 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/14 11:55:21 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/13 23:22:52 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/14 11:28:21 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	size_t	s1_len;
+	size_t	s2_len;
 	char	*result;
-	size_t	i;
-	size_t	str_len;
 
-	if (!s)
+	if (!s1 || !s2)
 		return (NULL);
-	str_len = ft_strlen(s);
-	if (str_len <= start)
-		return (ft_strdup(""));
-	if (len >= str_len - start)
-		len = str_len - start;
-	result = (char *)malloc(sizeof(char) * len + 1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	result = (char *)malloc(sizeof(char) * (s1_len + s2_len) + 1);
 	if (result == NULL)
 		return (NULL);
-	i = 0;
-	while (s[start] != '\0' && i < len)
-	{
-		result[i] = s[start];
-		i++;
-		start++;
-	}
-	result[i] = '\0';
+	ft_bzero(result, (s1_len + s2_len + 1));
+	ft_strlcpy(result, (char *)s1, s1_len + 1);
+	ft_strlcat(&result[s1_len], (char *)s2, s2_len + 1);
 	return (result);
 }

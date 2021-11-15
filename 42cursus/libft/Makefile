@@ -20,6 +20,11 @@ FILES		=	ft_strlen \
 				ft_atoi \
 				ft_calloc \
 				ft_strdup \
+				ft_substr \
+				ft_strjoin \
+				ft_strjoin \
+				ft_strtrim \
+				ft_split \
 				ft_memmove 
 
 DIR_OBJS	= ./
