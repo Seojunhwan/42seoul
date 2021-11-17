@@ -34,10 +34,14 @@ FILES		=	ft_strlen \
 				ft_putnbr_fd \
 				ft_memmove 
 
+FILES_BONUS	=	ft_lstnew
+
 DIR_OBJS	= ./
 OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
+OBJS_BONUS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES_BONUS)))
 DIR_SRCS	= ./
 SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
+SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
 
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
@@ -55,13 +59,15 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			$(AR) $(NAME) $(OBJS)
 
+bonus:		$(OBJS_BONUS)
+			$(AR) $(NAME) $(OBJS_BONUS)
 
 clean: 
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: 	clean
 			$(RM) $(NAME)
 
 re: 		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re

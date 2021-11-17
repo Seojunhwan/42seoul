@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 14:53:02 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/17 15:36:29 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/17 15:32:25 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/17 15:37:08 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-	size_t	src_len;
+	t_list	*list_ptr;
 
-	src_len = ft_strlen(src);
-	i = 0;
-	if (dstsize == 0)
-		return (src_len);
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (src_len);
+	list_ptr = malloc(sizeof(t_list));
+	if (list_ptr == NULL)
+		return (NULL);
+	list_ptr -> content = content;
+	list_ptr -> next = NULL;
+	return (list_ptr);
 }
