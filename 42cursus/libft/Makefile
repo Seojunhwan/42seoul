@@ -25,6 +25,7 @@ FILES		=	ft_strlen \
 				ft_strjoin \
 				ft_strtrim \
 				ft_split \
+				ft_itoa \
 				ft_memmove 
 
 DIR_OBJS	= ./
