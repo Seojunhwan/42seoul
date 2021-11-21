@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 15:33:00 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/12 14:34:04 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/19 22:40:32 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 char	*ft_strrchr(char *str, int c)
 {
-	int	i;
+	int	index;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	while (0 <= i)
+	index = ft_strlen(str);
+	while (0 <= index)
 	{	
-		if (str[i] == c)
-			return (&str[i]);
-		i--;
+		if (str[index] == c)
+			return (&str[index]);
+		index--;
 	}
 	return (NULL);
 }

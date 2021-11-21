@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:19:22 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/16 21:52:26 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/21 00:13:48 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 static size_t	calc_size(char const *s, char c)
 {
 	size_t	count;
+	size_t	i;
 
+	i = 0;
 	count = 0;
-	while (*s)
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 		{
-			while (*s == c)
-				s++;
+			while (s[i] == c)
+				i++;
 			count++;
+			continue ;
 		}
-		s++;
+		i++;
 	}
+	if (s[i - 1] != c)
+		count++;
 	return (count);
 }
 
@@ -54,14 +59,14 @@ static char	**release_memory(char **split)
 	return (NULL);
 }
 
-static char	**splitter(char **split, char const *s, char c, size_t max_length)
+static char	**splitter(char **split, char const *s, char c, size_t max_count)
 {
 	size_t	str_len;
 	size_t	size;
-	size_t	current_length;
+	size_t	current_count;
 
-	current_length = 0;
-	while (*s != '\0' && current_length <= max_length)
+	current_count = 0;
+	while (*s != '\0' && current_count < max_count)
 	{
 		if (*s == c)
 			s++;
@@ -69,31 +74,31 @@ static char	**splitter(char **split, char const *s, char c, size_t max_length)
 		{
 			size = 0;
 			str_len = get_strlen(s, c);
-			split[current_length] = (char *)malloc(sizeof(char) * str_len + 1);
-			if (split[current_length] == NULL)
+			split[current_count] = (char *)malloc(sizeof(char) * str_len + 1);
+			if (split[current_count] == NULL)
 				return (release_memory(split));
-			ft_strlcpy(split[current_length], s, str_len + 1);
+			ft_strlcpy(split[current_count], s, str_len + 1);
 			s += str_len;
-			current_length++;
+			current_count++;
 		}
 	}
-	split[current_length] = NULL;
+	split[current_count] = NULL;
 	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
-	size_t	max_length;
+	size_t	max_count;
 
 	if (!s)
 		return (NULL);
 	while (*s && *s == c)
 		s++;
-	max_length = calc_size(s, c);
-	split = (char **)malloc(sizeof(char *) * (max_length + 2));
+	max_count = calc_size(s, c);
+	split = (char **)malloc(sizeof(char *) * (max_count + 1));
 	if (split == NULL)
 		return (NULL);
-	splitter(split, s, c, max_length);
+	splitter(split, s, c, max_count);
 	return (split);
 }

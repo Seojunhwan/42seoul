@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 15:32:25 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/17 15:37:08 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/20 19:54:25 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*list_ptr;
+	t_list	*list_new;
 
-	list_ptr = malloc(sizeof(t_list));
-	if (list_ptr == NULL)
+	list_new = (t_list *)malloc(sizeof(t_list));
+	if (list_new == NULL)
 		return (NULL);
-	list_ptr -> content = content;
-	list_ptr -> next = NULL;
-	return (list_ptr);
+	list_new->content = content;
+	list_new->next = NULL;
+	return (list_new);
 }

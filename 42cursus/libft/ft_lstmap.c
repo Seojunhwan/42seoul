@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 23:14:18 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/20 12:37:30 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/17 21:04:45 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/20 20:01:03 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	size_t	i;
-	size_t	j;
-	size_t	start_fix;
+	t_list	**lists;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
+	lists = (t_list **)malloc(sizeof(t_list *) * ft_lstsize(lst) + 1);
 	i = 0;
-	while (i < len && haystack[i] != '\0')
+	while (lst)
 	{
-		j = 0;
-		start_fix = i;
-		while (i < len && haystack[i] != '\0' && haystack[i] == needle[j])
+		lists[i] = ft_lstnew(f(lst->content));
+		if (lists[i] == NULL)
 		{
-			i++;
-			j++;
+			ft_lstclear(lists, del);
+			return (NULL);
 		}
-		if (needle[j] == '\0')
-			return ((char *)&haystack[start_fix]);
+		lst = lst->next;
+		if (i > 0)
+			lists[i - 1]->next = lists[i];
 		i++;
 	}
-	return (NULL);
+	lists[i] = NULL;
+	return (*lists);
 }

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:43:09 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/17 13:00:17 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/21 00:28:50 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		result[0] = '-';
-		put_data(result, (unsigned int)-n, len - 1);
+		put_data(result, -n, len - 1);
 	}
 	else if (n == 0)
 		result[0] = '0';
