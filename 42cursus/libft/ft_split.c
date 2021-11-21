@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:19:22 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/21 00:13:48 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/21 16:59:43 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static size_t	calc_size(char const *s, char c)
 	size_t	count;
 	size_t	i;
 
+	if (!*s)
+		return (0);
 	i = 0;
 	count = 0;
 	while (s[i])

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:43:09 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/21 00:28:50 by junseo           ###   ########.fr       */
+/*   Updated: 2021/11/21 13:05:28 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static size_t	calc_size(int n)
 {
 	if (n == 0)
 		return (0);
-	else
-		return (1 + calc_size(n / 10));
-	return (1);
+	return (1 + calc_size(n / 10));
 }
 
 static char	*put_data(char *result, unsigned int n, int index)

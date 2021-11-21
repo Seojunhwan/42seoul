@@ -46,7 +46,7 @@ FILES_BONUS	=	ft_lstnew \
 
 DIR_OBJS	= ./
 OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
-OBJS_BONUS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES_BONUS)))
+OBJS_BONUS	= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES_BONUS)))
 DIR_SRCS	= ./
 SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
 SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
@@ -54,13 +54,13 @@ SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-AR			= ar crs
+AR			= ar crus
 RM			= rm -f
 
 NAME		= libft.a
 
-.c.o:		$(SRCS)
-			$(CC) $(CFLAGS) -c -o $@ $<
+.c.o:		$(SRCS) $(SRCS_BONUS)
+			$(CC) $(CFLAGS) -c $< -o $@
 
 all:		$(NAME)
 
