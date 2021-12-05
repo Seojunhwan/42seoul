@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:22:43 by junseo            #+#    #+#             */
-/*   Updated: 2021/12/04 23:34:15 by junseo           ###   ########.fr       */
+/*   Updated: 2021/12/05 23:04:17 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char	*get_line(int fd, char *buffer, char *backup)
 	int			read_result;
 	char		*line;
 
-	while (ft_strchr(buffer, '\n') == NULL)
+	if (backup == NULL)
+		backup = ft_strdup("");
+	while (ft_strchr(buffer, '\n') == NULL && ft_strchr(backup, '\n') == NULL)
 	{
 		read_result = read(fd, buffer, BUFFER_SIZE);
 		if (read_result == -1)
@@ -42,7 +44,7 @@ char	*extract(char *line)
 	while (line[i] != '\0' && line[i] != '\n')
 		i++;
 	result = ft_strdup(line + i + 1);
-	line[i + 1] = '\0';
+	line[i] = '\0';
 	return (result);
 }
 
