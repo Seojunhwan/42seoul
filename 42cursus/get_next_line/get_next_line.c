@@ -6,13 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:22:43 by junseo            #+#    #+#             */
-/*   Updated: 2021/12/05 23:04:17 by junseo           ###   ########.fr       */
+/*   Updated: 2021/12/05 23:06:19 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 char	*get_line(int fd, char *buffer, char *backup)
 {
