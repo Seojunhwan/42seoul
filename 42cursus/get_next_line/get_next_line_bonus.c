@@ -6,13 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:22:43 by junseo            #+#    #+#             */
-/*   Updated: 2021/12/11 18:15:57 by junseo           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:31:59 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 static char	*read_line(int fd, char *buf, char **backup)
 {
@@ -35,6 +33,7 @@ static char	*read_line(int fd, char *buf, char **backup)
 		if (!backup[fd])
 			return (NULL);
 		free(tmp);
+		tmp = NULL;
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
@@ -57,6 +56,7 @@ static char	*extract(char *line)
 	if (ret[0] == '\0')
 	{
 		free(ret);
+		ret = NULL;
 		return (NULL);
 	}
 	line[i + 1] = '\0';
@@ -65,28 +65,20 @@ static char	*extract(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	**backup;
+	static char	*backup[OPEN_MAX];
 	char		*line;
 	char		*buffer;
 
-	if (fd <= 0)
-		return (NULL);
-	backup = (char **)malloc(sizeof(char *) * _SC_OPEN_MAX);
-	if (!backup)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	line = read_line(fd, buffer, backup);
 	free(buffer);
+	buffer = NULL;
+	if (!line)
+		return (NULL);
 	backup[fd] = extract(line);
 	return (line);
-}
-
-int	main(void)
-{
-	int fd = open("./testFile", O_RDONLY);
-
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
 }

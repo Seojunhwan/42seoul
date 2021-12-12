@@ -6,13 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:22:43 by junseo            #+#    #+#             */
-/*   Updated: 2021/12/11 17:16:28 by junseo           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:31:12 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 static char	*read_line(int fd, char *buf, char *backup)
 {
@@ -35,6 +33,7 @@ static char	*read_line(int fd, char *buf, char *backup)
 		if (!backup)
 			return (NULL);
 		free(tmp);
+		tmp = NULL;
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
@@ -57,6 +56,7 @@ static char	*extract(char *line)
 	if (ret[0] == '\0')
 	{
 		free(ret);
+		ret = NULL;
 		return (NULL);
 	}
 	line[i + 1] = '\0';
@@ -70,21 +70,15 @@ char	*get_next_line(int fd)
 	static char	*backup;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
-		return (0);
+		return (NULL);
 	line = read_line(fd, buf, backup);
 	free(buf);
+	buf = NULL;
 	if (!line)
 		return (NULL);
 	backup = extract(line);
 	return (line);
-}
-
-int	main(void)
-{
-	int fd = open("./testFile", O_RDONLY);
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
 }
