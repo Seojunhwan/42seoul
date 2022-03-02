@@ -6,61 +6,61 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:22:43 by junseo            #+#    #+#             */
-/*   Updated: 2021/12/12 17:31:59 by junseo           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:22:36 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*read_line(int fd, char *buf, char **backup)
+static char	*ft_read_line(int fd, char *buf, char **backup)
 {
-	int		cnt;
-	char	*tmp;
+	int		count;
+	char	*temp_pointer;
 
-	cnt = 1;
-	while (cnt)
+	count = 1;
+	while (count)
 	{
-		cnt = read(fd, buf, BUFFER_SIZE);
-		if (cnt == -1)
+		count = read(fd, buf, BUFFER_SIZE);
+		if (count == -1)
 			return (0);
-		else if (cnt == 0)
+		else if (count == 0)
 			break ;
-		buf[cnt] = '\0';
+		buf[count] = '\0';
 		if (!backup[fd])
 			backup[fd] = ft_strdup("");
-		tmp = backup[fd];
-		backup[fd] = ft_strjoin(tmp, buf);
+		temp_pointer = backup[fd];
+		backup[fd] = ft_strjoin(temp_pointer, buf);
 		if (!backup[fd])
 			return (NULL);
-		free(tmp);
-		tmp = NULL;
+		free(temp_pointer);
+		temp_pointer = NULL;
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
 	return (backup[fd]);
 }
 
-static char	*extract(char *line)
+static char	*ft_extract(char *line)
 {
 	int		i;
-	char	*ret;
+	char	*result;
 
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 		i++;
 	if (line[i] == '\0')
 		return (0);
-	ret = ft_substr(line, i + 1, ft_strlen(line) - i);
-	if (!ret)
+	result = ft_substr(line, i + 1, ft_strlen(line) - i);
+	if (!result)
 		return (NULL);
-	if (ret[0] == '\0')
+	if (result[0] == '\0')
 	{
-		free(ret);
-		ret = NULL;
+		free(result);
+		result = NULL;
 		return (NULL);
 	}
 	line[i + 1] = '\0';
-	return (ret);
+	return (result);
 }
 
 char	*get_next_line(int fd)
@@ -74,11 +74,11 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	line = read_line(fd, buffer, backup);
+	line = ft_read_line(fd, buffer, backup);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	backup[fd] = extract(line);
+	backup[fd] = ft_extract(line);
 	return (line);
 }
