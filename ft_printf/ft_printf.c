@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 17:35:16 by junseo            #+#    #+#             */
-/*   Updated: 2022/03/31 20:49:18 by junseo           ###   ########.fr       */
+/*   Created: 2022/03/31 21:19:28 by junseo            #+#    #+#             */
+/*   Updated: 2022/03/31 21:23:47 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_str_printer(va_list *ap)
 	if (str == NULL)
 	{
 		ft_putchar_fd("(null)", 1);
-		len = 6;5
+		len = 6;
 	}
 	else
 	{
@@ -41,9 +41,9 @@ int	ft_str_printer(va_list *ap)
 // ----------------------------------------CHAR & STR ----------------------------------------------------
 
 
-int ft_decimal_printer(va_list *ap)
+int	ft_decimal_printer(va_list *ap)
 {
-	int number;
+	int	number;
 	int	len;
 
 	number = va_arg(*ap, int);
@@ -61,13 +61,13 @@ int ft_decimal_printer(va_list *ap)
 		number /= 10;
 		len += 1;
 	}
-	return (len)
+	return (len);
 }
 
 int	ft_unsigned_decimal_printer(va_list *ap)
 {
-	unsigned int number;
-	int	len;
+	unsigned int	number;
+	int				len;
 
 	number = (unsigned int)va_arg(*ap, int);
 	if (number == 0)
@@ -82,7 +82,7 @@ int	ft_unsigned_decimal_printer(va_list *ap)
 		number /= 10;
 		len += 1;
 	}
-	return (len)
+	return (len);
 }
 
 void	ft_put_unnbr(unsigned int number, int fd)
@@ -98,11 +98,42 @@ void	ft_put_unnbr(unsigned int number, int fd)
 	}
 }
 
-
 // ----------------------------------------- INT, UNSIGNED INT ------------------------------------------
 
+int	ft_hex_printer(va_list *ap, int uppercase)
+{
+	int	len;
+	int	number;
 
+	len = 0;
+	number = (unsigned int)va_arg(*ap, unsigned int);
+	if (uppercase == 1)
+		ft_put_hex(number, "0123456789ABCDEF", 1);
+	else if (uppercase == 0)
+		ft_put_hex(number, "0123456789abcdef", 1);
+	if (number == 0)
+		len += 1;
+	while (number)
+	{
+		number /= 16;
+		len += 1;
+	}
+	return (len);
+}
 
+int	ft_put_hex(unsigned int number, char *format, int fd)
+{
+	if (number >= 16)
+	{
+		ft_put_hex(number / 16 ,format , fd);
+		ft_putchar_fd(format[number % 16], fd);
+	}
+	else {
+		ft_putchar_fd(format[number], fd);
+	}
+}
+
+// --------------------------------- HEX ---------------------------------
 
 int	ft_flag_checker(const char *format, va_list *ap)
 {
@@ -112,16 +143,16 @@ int	ft_flag_checker(const char *format, va_list *ap)
 		len = ft_char_printer(&ap);
 	if (*format == 's')
 		len = ft_str_printer(&ap);
-	if (*format == 'p')
-		ft_putstr_fd(va_arg(ap, char *), 0);
+	// if (*format == 'p')
+		// ft_putstr_fd(va_arg(ap, char *), 0);
 	if (*format == 'd' || *format == 'i')
 		len = ft_decimal_printer(&ap);
 	if (*format == 'u')
 		len = ft_unsigned_decimal_printer(&ap);
 	if (*format == 'x')
-		ft_putnbr_fd(va_arg(ap, int), 0);
+		len = ft_hex_printer(*ap, 0);
 	if (*format == 'X')
-		ft_putnbr_fd(va_arg(ap, int), 0);
+		len = ft_hex_printer(*ap, 1);
 	if (*format == '%')
 	{
 		ft_putchar_fd("%", 0);
@@ -185,9 +216,7 @@ int	ft_printf(const char *format, ...)
 #include <stdio.h>
 int	main(void)
 {
-	char *str = "123456789";
-	char *str_ptr;
-	printf("%     % %    d%    d", 123, 345);
+	ft_printf("%d", 3434);
 
 	return (0);
 }
