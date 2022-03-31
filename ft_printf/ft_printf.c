@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:19:28 by junseo            #+#    #+#             */
-/*   Updated: 2022/03/31 21:23:47 by junseo           ###   ########.fr       */
+/*   Updated: 2022/03/31 21:52:59 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_str_printer(va_list *ap)
 	str = (char *)va_arg(*ap, char *);
 	if (str == NULL)
 	{
-		ft_putchar_fd("(null)", 1);
+		ft_putstr_fd("(null)", 1);
 		len = 6;
 	}
 	else
@@ -40,6 +40,18 @@ int	ft_str_printer(va_list *ap)
 
 // ----------------------------------------CHAR & STR ----------------------------------------------------
 
+void	ft_put_unnbr(unsigned int number, int fd)
+{
+	if (number >= 10)
+	{
+		ft_put_unnbr(number / 10, fd);
+		ft_putchar_fd((number % 10) + '0', fd);
+	}
+	else
+	{
+		ft_putchar_fd(number + '0', fd);
+	}
+}
 
 int	ft_decimal_printer(va_list *ap)
 {
@@ -50,7 +62,7 @@ int	ft_decimal_printer(va_list *ap)
 	ft_putnbr_fd(number, 1);
 	len = 0;
 	if (number == 0)
-		ret += 1;
+		len += 1;
 	else if (number < 0)
 	{
 		number *= -1;
@@ -76,7 +88,7 @@ int	ft_unsigned_decimal_printer(va_list *ap)
 		ft_put_unnbr(number, 1);
 	len = 0;
 	if (number == 0)
-		ret += 1;
+		len += 1;
 	while (number)
 	{
 		number /= 10;
@@ -85,20 +97,22 @@ int	ft_unsigned_decimal_printer(va_list *ap)
 	return (len);
 }
 
-void	ft_put_unnbr(unsigned int number, int fd)
-{
-	if (number >= 10)
-	{
-		ft_put_unnbr(number / 10, fd)
-		ft_putchar_fd((number % 10) + '0', fd);
-	}
-	else
-	{
-		ft_putchar_fd(number + '0', fd);
-	}
-}
+
 
 // ----------------------------------------- INT, UNSIGNED INT ------------------------------------------
+
+
+void	ft_put_hex(unsigned int number, char *format, int fd)
+{
+	if (number >= 16)
+	{
+		ft_put_hex(number / 16 ,format , fd);
+		ft_putchar_fd(format[number % 16], fd);
+	}
+	else {
+		ft_putchar_fd(format[number], fd);
+	}
+}
 
 int	ft_hex_printer(va_list *ap, int uppercase)
 {
@@ -121,41 +135,66 @@ int	ft_hex_printer(va_list *ap, int uppercase)
 	return (len);
 }
 
-int	ft_put_hex(unsigned int number, char *format, int fd)
+
+// --------------------------------- HEX ---------------------------------
+
+void	ft_put_pointer(uintptr_t ptr)
 {
-	if (number >= 16)
+	if (ptr >= 16)
 	{
-		ft_put_hex(number / 16 ,format , fd);
-		ft_putchar_fd(format[number % 16], fd);
+		ft_put_pointer(ptr / 16);
+		ft_put_pointer(ptr % 16);
 	}
-	else {
-		ft_putchar_fd(format[number], fd);
+	else 
+	{
+		ft_putchar_fd("0123456789abcdef"[ptr], 1);
 	}
 }
 
-// --------------------------------- HEX ---------------------------------
+int	ft_pointer_printer(va_list *ap)
+{
+	int			len;
+	uintptr_t	ptr;
+
+	len = 0;
+	ptr = (uintptr_t)va_arg(*ap, void *);
+	ft_putstr_fd("0x", 1);
+	len += 2;
+	if (ptr == 0)
+	{
+		ft_putchar_fd('0', 1);
+		len += 1;
+	}
+	ft_put_pointer(ptr);
+	while (ptr)
+	{
+		ptr /= 16;
+		len += 1;
+	}
+	return (len);
+}
 
 int	ft_flag_checker(const char *format, va_list *ap)
 {
 	int	len;
 
 	if (*format == 'c')
-		len = ft_char_printer(&ap);
+		len = ft_char_printer(ap);
 	if (*format == 's')
-		len = ft_str_printer(&ap);
-	// if (*format == 'p')
-		// ft_putstr_fd(va_arg(ap, char *), 0);
+		len = ft_str_printer(ap);
+	if (*format == 'p')
+		len = ft_pointer_printer(ap);
 	if (*format == 'd' || *format == 'i')
-		len = ft_decimal_printer(&ap);
+		len = ft_decimal_printer(ap);
 	if (*format == 'u')
-		len = ft_unsigned_decimal_printer(&ap);
+		len = ft_unsigned_decimal_printer(ap);
 	if (*format == 'x')
-		len = ft_hex_printer(*ap, 0);
+		len = ft_hex_printer(ap, 0);
 	if (*format == 'X')
-		len = ft_hex_printer(*ap, 1);
+		len = ft_hex_printer(ap, 1);
 	if (*format == '%')
 	{
-		ft_putchar_fd("%", 0);
+		ft_putchar_fd('%', 0);
 		len = 1;
 	}
 	else 
@@ -178,7 +217,11 @@ int	ft_printf(const char *format, ...)
 			len += ft_flag_checker(format, &ap);
 		}
 		else
-			len = write(0, *format, 1);
+		{
+			ft_putchar_fd(*format, 1);
+			len += 1;
+		}
+
 		format++;
 	}
 	va_end(ap);
@@ -216,7 +259,7 @@ int	ft_printf(const char *format, ...)
 #include <stdio.h>
 int	main(void)
 {
-	ft_printf("%d", 3434);
+	ft_printf("%d\n%x", 3434,394998);
 
 	return (0);
 }
