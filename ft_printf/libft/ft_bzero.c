@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 13:53:50 by junseo            #+#    #+#             */
-/*   Updated: 2022/03/19 19:28:20 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/09 17:02:07 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/21 00:16:55 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	str_len;
-	size_t	i;
+	unsigned char	*ptr;
+	size_t			i;
 
-	if (!s)
-		return ;
+	ptr = s;
 	i = 0;
-	str_len = ft_strlen(s);
-	while (i < str_len)
-		ft_putchar_fd(s[i++], fd);
+	while (i < n)
+	{
+		*(ptr + i) = (unsigned char)0;
+		i++;
+	}
 }

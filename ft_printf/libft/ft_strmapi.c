@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 21:32:41 by junseo            #+#    #+#             */
-/*   Updated: 2022/03/19 21:02:19 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/16 21:55:06 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/20 17:11:11 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*result;
-	size_t	str_len;
+	char			*result;
+	unsigned int	str_len;
+	unsigned int	i;
 
-	if (!s)
+	if (!s || !f)
 		return (NULL);
+	i = 0;
 	str_len = ft_strlen(s);
-	if (str_len < start)
-		return (ft_strdup(""));
-	if (len >= str_len - start)
-		len = str_len - start;
-	result = (char *)malloc(sizeof(char) * len + 1);
+	result = (char *)malloc(sizeof(char) * str_len + 1);
 	if (result == NULL)
 		return (NULL);
-	ft_strlcpy(result, s + start, len + 1);
+	while (i < str_len)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[i] = '\0';
 	return (result);
 }

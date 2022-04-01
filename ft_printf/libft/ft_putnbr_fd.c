@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 14:03:29 by junseo            #+#    #+#             */
-/*   Updated: 2022/03/19 19:27:04 by junseo           ###   ########.fr       */
+/*   Updated: 2021/12/04 23:36:56 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static	void	put_nbr(unsigned int n, int fd)
 {
