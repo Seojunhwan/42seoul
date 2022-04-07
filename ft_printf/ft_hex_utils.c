@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:13:43 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/01 15:17:55 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/07 13:30:12 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_put_hex(unsigned int number, char *format, int fd)
 
 int	ft_hex_printer(va_list *ap, int uppercase)
 {
-	int	len;
-	int	number;
+	int				len;
+	unsigned int	number;
 
 	len = 0;
 	number = (unsigned int)va_arg(*ap, unsigned int);

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:39:46 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/01 17:09:02 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/07 15:30:46 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_char_printer(va_list *ap)
 {
-	ft_putchar_fd(va_arg(*ap, int), 1);
+	ft_putchar_fd((char)va_arg(*ap, int), 1);
 	return (1);
 }
 
