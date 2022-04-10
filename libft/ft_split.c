@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:19:22 by junseo            #+#    #+#             */
-/*   Updated: 2021/11/21 16:59:43 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 17:48:46 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static char	**release_memory(char **split)
 static char	**splitter(char **split, char const *s, char c, size_t max_count)
 {
 	size_t	str_len;
-	size_t	size;
 	size_t	current_count;
 
 	current_count = 0;
@@ -74,7 +73,6 @@ static char	**splitter(char **split, char const *s, char c, size_t max_count)
 			s++;
 		else
 		{
-			size = 0;
 			str_len = get_strlen(s, c);
 			split[current_count] = (char *)malloc(sizeof(char) * str_len + 1);
 			if (split[current_count] == NULL)

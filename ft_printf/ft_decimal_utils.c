@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_decimal_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:13:11 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/01 15:15:16 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 17:51:59 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_put_unnbr(unsigned int number, int fd)
 		ft_putchar_fd((number % 10) + '0', fd);
 	}
 	else
-	{
 		ft_putchar_fd(number + '0', fd);
-	}
 }
 
 int	ft_decimal_printer(va_list *ap)

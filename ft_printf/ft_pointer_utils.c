@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pointer_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:14:23 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/07 13:30:28 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 17:49:20 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_put_pointer(uintptr_t ptr)
 		ft_put_pointer(ptr % 16);
 	}
 	else
-	{
 		ft_putchar_fd("0123456789abcdef"[ptr], 1);
-	}
 }
 
 int	ft_pointer_printer(va_list *ap)

@@ -1,4 +1,4 @@
-LIBFT 	= ./libft/libft.a
+LIBFT 	= libft/libft.a
 
 NAME	= libftprintf.a
 
@@ -21,7 +21,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			$(MAKE) -C ./libft
-			cp libft/libft.a ./$(NAME)
+			cp $(LIBFT) ./$(NAME)
 			$(AR) $(NAME) $(OBJS)
 
 clean:
