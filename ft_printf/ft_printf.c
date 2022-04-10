@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:19:28 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/10 18:23:15 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 19:02:39 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			i;
-	int			len;
+	long long	len;
 
 	if (!format)
 		return (-1);
@@ -68,5 +68,7 @@ int	ft_printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
-	return (len);
+	if (len > 2147483647)
+		return (-1);
+	return ((int)len);
 }
