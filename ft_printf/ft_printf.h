@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:58:41 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/10 17:51:03 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 18:22:40 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdlib.h>
 # include <stdarg.h>
-# include <unistd.h>
 # include "libft/libft.h"
 
 int					ft_decimal_printer(va_list *ap);

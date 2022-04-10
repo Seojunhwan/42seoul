@@ -6,12 +6,11 @@
 /*   By: junseo <junseo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:19:28 by junseo            #+#    #+#             */
-/*   Updated: 2022/04/07 13:31:46 by junseo           ###   ########.fr       */
+/*   Updated: 2022/04/10 18:23:15 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	other_form(char c)
 {
