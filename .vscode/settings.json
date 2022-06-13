@@ -16,5 +16,7 @@
     "stdio.h": "c",
     "get_next_line.h": "c",
     "unistd.h": "c"
-  }
+  },
+  "42header.email": "junseo@student.42seoul.kr",
+  "42header.username": "junseo"
 }

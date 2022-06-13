@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:52:26 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:09 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:27:40 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_verify_bit(int server_pid, char c)
 			kill(server_pid, SIGUSR2);
 		else if ((c >> bit & 1) == 1)
 			kill(server_pid, SIGUSR1);
-		usleep(100);
+		usleep(50);
 	}
 	return ;
 }
@@ -49,7 +49,7 @@ void	send_end_signal(int server_pid)
 	kill(server_pid, SIGUSR2);
 	while (bit--)
 	{
-		usleep(100);
+		usleep(50);
 		kill(server_pid, SIGUSR1);
 	}
 	return ;

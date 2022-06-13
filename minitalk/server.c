@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:18:06 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/13 16:46:08 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:29:58 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,8 @@ void	handler(int signo, siginfo_t *info, void *context)
 int	display_pid(void)
 {
 	char	*pid;
-	int		get_pid;
 
-	get_pid = getpid();
-	if (get_pid < 0 || 99998 < get_pid)
-	{
-		write(1, "PID ERROR! PID is out of the range!\n", 36);
-		return (0);
-	}
-	pid = ft_itoa(get_pid);
+	pid = ft_itoa(getpid());
 	if (!pid)
 	{
 		write(1, "PID Malloc Error\n", 17);
