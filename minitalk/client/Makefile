@@ -6,28 +6,34 @@
 #    By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 17:10:46 by junseo            #+#    #+#              #
-#    Updated: 2022/06/14 20:49:29 by junseo           ###   ########.fr        #
+#    Updated: 2022/06/14 20:27:02 by junseo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	minitalk
-SERVER_DIR		=	./server/
-CLIENT_DIR		=	./client/
+CLIENT = client
 
-all:
-	make -C ${SERVER_DIR} all
-	make -C ${CLIENT_DIR} all
+SRCS = client.c \
+		send_utils.c \
+		utils.c \
+
+OBJS_CLIENT = ${SRCS:.c=.o}
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+
+all: ${CLIENT}
+
+${CLIENT}: ${OBJS_CLIENT}
+	@${CC} ${OBJS_CLIENT} ${CFLAGS} -o ${CLIENT} -I ./
 
 clean:
-	make -C ${SERVER_DIR} clean
-	make -C ${CLIENT_DIR} clean
+	@${RM} ${OBJS_CLIENT}
 
-fclean:
-	make -C ${SERVER_DIR} fclean
-	make -C ${CLIENT_DIR} fclean
+fclean: clean
+	@${RM} ${CLIENT}
 
 re: 
-	make -C ${SERVER_DIR} re
-	make -C ${CLIENT_DIR} re
+	make fclean
+	make all
 
 .PHONY: clean fclean re all

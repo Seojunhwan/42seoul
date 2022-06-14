@@ -6,11 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:28:45 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/13 16:46:29 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:31:30 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "server.h"
 
 size_t	calc_size(int n)
 {

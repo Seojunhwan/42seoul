@@ -6,11 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:21:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/12 15:55:53 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:31:23 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "server.h"
 
 int	ft_isdigit(int c)
 {

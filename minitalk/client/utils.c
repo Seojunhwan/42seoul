@@ -6,11 +6,9 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:21:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/12 15:55:53 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:39:30 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minitalk.h"
 
 int	ft_isdigit(int c)
 {
@@ -60,14 +58,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)n * result);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
 }

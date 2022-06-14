@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:17:10 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 17:31:35 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:30:04 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef CLIENT_H
+# define CLIENT_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -27,9 +27,10 @@ typedef struct s_request
 
 extern t_request	g_request;
 
-size_t	ft_strlen(const char *str);
-char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
+void	send_end_signal(void);
+void	send_signal(void);
+void	send_handshake(void);
+void	ft_verify_bit(char c, int bit);
 
 #endif
