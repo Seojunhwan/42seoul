@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:17:10 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 17:31:32 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 17:31:35 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_request
 {
 	struct sigaction	handshake_action;
 	struct sigaction	receive_action;
-	pid_t				current_client;
-	int					is_done;
+	pid_t				server_pid;
+	char				*message;
 }	t_request;
 
 extern t_request	g_request;

@@ -6,7 +6,7 @@
 #    By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 17:10:46 by junseo            #+#    #+#              #
-#    Updated: 2022/06/11 18:32:01 by junseo           ###   ########.fr        #
+#    Updated: 2022/06/14 03:04:56 by junseo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,13 @@ ${SERVER}: ${OBJS_SERVER}
 ${CLIENT}: ${OBJS_CLIENT}
 	@${CC} ${OBJS_CLIENT} ${CFLAGS} -o ${CLIENT} -I ./
 
-clean:
-	@${RM} ${OBJS_SERVER}
-	@${RM} ${OBJS_CLIENT}
+# clean:
+# 	@${RM} ${OBJS_SERVER}
+# 	@${RM} ${OBJS_CLIENT}
 
-fclean: clean
-	@${RM} ${SERVER}
-	@${RM} ${CLIENT}
+# fclean: clean
+# 	@${RM} ${SERVER}
+# 	@${RM} ${CLIENT}
 
 re: 
 	make fclean
