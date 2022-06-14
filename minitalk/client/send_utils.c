@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:18:22 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 20:30:18 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:36:15 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_request	g_request;
 
 void	ft_verify_bit(char c, int bit)
 {
-	usleep(20);
 	if ((c >> bit & 1) == 0)
 		kill(g_request.server_pid, SIGUSR2);
 	else if ((c >> bit & 1) == 1)

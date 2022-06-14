@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:43:04 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 20:43:27 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:36:26 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_request	g_request;
 
 void	print_message(void)
 {
-	usleep(100);
 	write(1, g_request.message, g_request.index + 1);
 	if (g_request.message[g_request.index] == 127)
 		g_request.is_done = 1;

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:18:06 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 20:45:16 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:37:00 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	handshake_handler(int signo, siginfo_t *info, void *context)
 
 void	init(void)
 {
-	g_request.handshake_action.sa_flags = SA_SIGINFO;
-	g_request.receive_action.sa_flags = SA_SIGINFO;
+	g_request.handshake_action.sa_flags = SA_SIGINFO | SA_NODEFER;
+	g_request.receive_action.sa_flags = SA_SIGINFO | SA_NODEFER;
 	g_request.handshake_action.sa_sigaction = handshake_handler;
 	g_request.receive_action.sa_sigaction = receive_handler;
 	g_request.current_client = 0;
