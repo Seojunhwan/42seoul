@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:52:26 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 22:37:24 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:31:50 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,27 @@ t_request	g_request;
 
 void	condition_validator(int argc, char **argv)
 {
+	int	i;
+	int	is_pid_error;
+
+	i = 0;
+	is_pid_error = 0;
 	if (argc != 3)
 	{
-		write(1, "Error! need to write as: ./client [PID] [Message]\n", 50);
-		exit(0);
+		ft_putstr_fd("Error! need to write as: ./client [PID] [Message]\n", 1);
+		exit(1);
+	}
+	while (argv[1][i] != '\0')
+	{
+		if (!ft_isdigit(argv[1][i]))
+			is_pid_error = 1;
+		i++;
 	}
 	g_request.server_pid = ft_atoi(argv[1]);
-	if (g_request.server_pid <= 0)
+	if (g_request.server_pid <= 0 || is_pid_error)
 	{
-		write(1, "PID Error!\n", 11);
-		exit(0);
+		ft_putstr_fd("is invalid PID!", 1);
+		exit(1);
 	}
 }
 
@@ -40,10 +51,10 @@ void	handshake_handler(int signo, siginfo_t *info, void *context)
 	}
 	else if (signo == SIGUSR1)
 	{
-		write(1, "success handshake\n", 18);
+		ft_putstr_fd("Success handshake\n", 1);
 		sigaction(SIGUSR1, &g_request.receive_action, NULL);
 		sigaction(SIGUSR2, &g_request.receive_action, NULL);
-		usleep(25);
+		usleep(10);
 		send_signal();
 	}
 }
@@ -53,12 +64,10 @@ void	receive_handler(int signo, siginfo_t *info, void *context)
 	(void)context;
 	(void)info;
 	if (signo == SIGUSR1)
-	{
 		send_signal();
-	}
 	else if (signo == SIGUSR2)
 	{
-		write(1, "send success\n", 13);
+		ft_putstr_fd("Message sent complete\n", 1);
 		exit(0);
 	}
 }

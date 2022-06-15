@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:21:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 20:31:23 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:04:08 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,16 @@ int	ft_atoi(const char *str)
 	return ((int)n * result);
 }
 
-size_t	ft_strlen(const char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	unsigned char	*ptr;
+	size_t			i;
 
+	ptr = s;
 	i = 0;
-	while (str[i] != '\0')
+	while (i < n)
+	{
+		*(ptr + i) = (unsigned char)0;
 		i++;
-	return (i);
+	}
 }

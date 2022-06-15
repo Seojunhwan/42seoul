@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:18:22 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 22:36:15 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:25:09 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ void	send_handshake(void)
 {
 	static int	request_count;
 
+	ft_putstr_fd("Request handshake\n", 1);
 	kill(g_request.server_pid, SIGUSR1);
 	if (request_count == 15)
 	{
-		write(1, "Server error\n", 13);
-		exit(0);
+		ft_putstr_fd("Server error\n", 1);
+		exit(1);
 	}
 	request_count++;
 }

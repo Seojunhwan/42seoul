@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:28:45 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 20:31:30 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:03:49 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,4 @@ char	*ft_itoa(int n)
 		put_data(result, n, len - 1);
 	result[len] = '\0';
 	return (result);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = s;
-	i = 0;
-	while (i < n)
-	{
-		*(ptr + i) = (unsigned char)0;
-		i++;
-	}
 }

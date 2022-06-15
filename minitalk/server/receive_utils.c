@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:43:04 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 22:36:26 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:32:02 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_message(void)
 
 void	send_end_message(pid_t client_pid)
 {
-	write(1, "\n", 1);
+	ft_putchar_fd('\n', 1);
 	sigaction(SIGUSR1, &g_request.handshake_action, NULL);
 	sigaction(SIGUSR2, &g_request.handshake_action, NULL);
 	g_request.current_client = 0;

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:18:06 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/14 22:37:00 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:08:54 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	display_pid(void)
 	pid = ft_itoa(getpid());
 	if (!pid)
 	{
-		write(1, "PID Malloc Error\n", 17);
+		ft_putstr_fd("PID Malloc Error\n", 1);
 		free(pid);
 		return (0);
 	}
-	write(1, "PID : ", 6);
-	write(1, pid, ft_strlen(pid));
-	write(1, "\n", 1);
+	ft_putstr_fd("PID : ", 1);
+	ft_putstr_fd(pid, 1);
+	ft_putchar_fd('\n', 1);
 	free(pid);
 	return (1);
 }
@@ -58,8 +58,8 @@ void	init(void)
 	g_request.message = (unsigned char *)malloc(sizeof(char) * 100);
 	if (!g_request.message)
 	{
-		write(1, "message buf malloc failed\n", 22);
-		exit(0);
+		ft_putstr_fd("message buf malloc failed\n", 1);
+		exit(1);
 	}
 }
 
