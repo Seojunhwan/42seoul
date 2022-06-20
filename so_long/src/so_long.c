@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 03:51:38 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 int	main(int argc, char **argv)
 {
 	t_param	*param;
+	char	*map_path;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
+	map_path = argv[1];
+	argument_checker(argc, map_path);
 	param = (t_param *)malloc(sizeof(t_param));
 	if (!param)
 		error_handler(ERROR_MALLOC);
+	init(param);
+	parse_map(param->game, map_path);
+	check_map(param->game);
 	return (0);
 }
-
-	// arguments check
-	// struct initialize

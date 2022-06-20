@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:33:48 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:57:21 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 05:01:13 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
-# include "../get_next_line.h"
-// # include "../libft/libft.h"
+// # include "../libft/libft/libft.h"
+# include "../libft/get_next_line.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -32,12 +32,17 @@ typedef struct s_position
 
 typedef struct s_game
 {
-	char		*map;
+	char		**map;
 	int			map_width;
 	int			map_height;
 	int			collection;
-	int			is_open_entrance;
+	int			entrance;
+	int			player;
 	int			move_count;
+	int			is_exist_entrance;
+	int			is_exist_collection;
+	int			is_exist_player;
+	int			is_possible_exit;
 	t_position	pos;
 }	t_game;
 
@@ -63,10 +68,27 @@ typedef enum e_list_of_error
 {
 	ERROR_MALLOC,
 	ERROR_MAP_PARSING,
-	ERROR_WRONG_ARGC,
+	ERROR_WRONG_ARGUMENTS,
 	ERROR_WRONG_MAP_FILE,
 }	t_error_code;
 
+typedef enum e_list_of_tile
+{
+	TILE_BLANK = '0',
+	TILE_WALL = '1',
+	TILE_COLLECTION = 'C',
+	TILE_PLAYER = 'P',
+	TILE_ENTRANCE = 'E'
+}	t_tile;
+
 void	error_handler(t_error_code error);
+void	argument_checker(int argc, char *argv);
+void	parse_map(t_game *game, char *map_path);
+void	check_map(t_game *game);
+char	*get_next_line(int fd);
+char	**put_line_to_map(t_game *game, char *line);
+void	init(t_param *param);
+
+
 
 #endif
