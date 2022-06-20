@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/12 15:05:31 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/20 23:47:14 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_param	*param;
+	const unsigned char	*ptr;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	ptr = (const unsigned char *)s;
+	while (n)
+	{
+		if (*ptr == (unsigned char)c)
+			return ((void *)ptr);
+		ptr++;
+		n--;
+	}
+	return (NULL);
 }
-
-	// arguments check
-	// struct initialize

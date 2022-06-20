@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/12/03 17:49:03 by junseo            #+#    #+#             */
+/*   Updated: 2021/12/12 13:23:36 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int argc, char **argv)
-{
-	t_param	*param;
+# include <unistd.h>
+# include <stdlib.h>
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
 
-	// arguments check
-	// struct initialize
+char	*get_next_line(int fd);
+int		ft_strlen(const char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+#endif

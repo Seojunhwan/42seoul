@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/12 23:14:18 by junseo            #+#    #+#             */
+/*   Updated: 2021/12/10 17:48:20 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *dest, const char *src, size_t len)
 {
-	t_param	*param;
+	size_t	i;
+	size_t	j;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	i = 0;
+	if (*src == '\0')
+		return ((char *)dest);
+	while (i < len && dest[i] != '\0')
+	{
+		j = 0;
+		if (dest[i] == src[j])
+		{
+			while (dest[i + j] == src[j] && (i + j) < len && src[j] != '\0')
+				j++;
+			if (src[j] == '\0')
+				return ((char *)&dest[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }
-
-	// arguments check
-	// struct initialize

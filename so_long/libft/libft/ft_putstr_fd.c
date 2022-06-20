@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/17 13:53:50 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/17 13:56:28 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_param	*param;
+	size_t	str_len;
+	size_t	i;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	if (!s)
+		return ;
+	i = 0;
+	str_len = ft_strlen(s);
+	while (i < str_len)
+		ft_putchar_fd(s[i++], fd);
 }
-
-	// arguments check
-	// struct initialize

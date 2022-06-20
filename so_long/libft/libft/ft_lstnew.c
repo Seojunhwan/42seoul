@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/17 15:32:25 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/20 19:54:25 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	t_param	*param;
+	t_list	*list_new;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	list_new = (t_list *)malloc(sizeof(t_list));
+	if (list_new == NULL)
+		return (NULL);
+	list_new->content = content;
+	list_new->next = NULL;
+	return (list_new);
 }
-
-	// arguments check
-	// struct initialize

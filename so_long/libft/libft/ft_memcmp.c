@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2021/11/12 15:18:10 by junseo            #+#    #+#             */
+/*   Updated: 2021/11/20 14:21:52 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_param	*param;
+	const unsigned char		*s1_ptr;
+	const unsigned char		*s2_ptr;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
+	if (n == 0)
+		return (0);
+	s1_ptr = (const unsigned char *)s1;
+	s2_ptr = (const unsigned char *)s2;
+	while (n)
+	{
+		if (*s1_ptr != *s2_ptr)
+			return ((int)(*s1_ptr - *s2_ptr));
+		s1_ptr++;
+		s2_ptr++;
+		n--;
+	}
 	return (0);
 }
-
-	// arguments check
-	// struct initialize

@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2022/06/20 20:33:41 by junseo            #+#    #+#             */
+/*   Updated: 2022/06/20 22:01:30 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+int	parse_map(char *path, t_game *game)
 {
-	t_param	*param;
+	char	*line;
+	int		fd;
 
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	fd = open_map(path);
+	line = get_next_line(fd);
+	game->map_height = 0;
+	game->map_width = ft_strlen(line) - 1;
+	// game->map = 
+	// while (line)
+	// {
+	// }
 }
 
-	// arguments check
-	// struct initialize
+int	open_map(const char *path)
+{
+	int	fd;
+
+		fd = open(path, O_RDONLY);
+	if (fd == -1)
+		error_handler(ERROR_MAP_PARSING);
+	return (fd);
+}

@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/20 21:07:17 by junseo           ###   ########.fr       */
+/*   Created: 2022/06/20 20:15:51 by junseo            #+#    #+#             */
+/*   Updated: 2022/06/20 21:02:07 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	error_handler(t_error_code error)
 {
-	t_param	*param;
-
-	if (argc != 2)
-		error_handler(ERROR_WRONG_ARGC);
-	param = (t_param *)malloc(sizeof(t_param));
-	if (!param)
-		error_handler(ERROR_MALLOC);
-	return (0);
+	if (error == ERROR_WRONG_ARGC)
+	{
+		printf("CHECK THE ARGUMENTS");
+		exit(1);
+	}
+	else if (error == ERROR_MAP_PARSING)
+	{
+		printf("CHECK THE ARGUMENTS");
+		exit(1);
+	}
+	else if (error == ERROR_MALLOC)
+	{
+		printf("AN ERROR OCCURRED WHILE MALLOC");
+		exit(1);
+	}
+	else if (error == ERROR_WRONG_MAP_FILE)
+	{
+		printf("CHECK THE MAP FILE");
+		exit(1);
+	}
 }
-
-	// arguments check
-	// struct initialize
