@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:03:04 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 03:12:06 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 19:32:59 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	init(t_param *param)
 	if (!(param->game))
 		error_handler(ERROR_MALLOC);
 	param->game->collection = 0;
+	param->game->entrance = 0;
+	param->game->player = 0;
+	param->game->move_count = 0;
 	param->game->is_exist_collection = 0;
 	param->game->is_exist_entrance = 0;
 	param->game->is_exist_player = 0;

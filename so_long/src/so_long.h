@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:33:48 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 05:01:13 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 19:42:41 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-# define IMG_SIZE			64
-# define TRUE = 1;
-# define FALSE = 0;
+# define IMG_SIZE	64
+# define TRUE	1;
+# define FALSE	0;
 
 typedef struct s_position
 {
@@ -74,7 +74,7 @@ typedef enum e_list_of_error
 
 typedef enum e_list_of_tile
 {
-	TILE_BLANK = '0',
+	TILE_LAND = '0',
 	TILE_WALL = '1',
 	TILE_COLLECTION = 'C',
 	TILE_PLAYER = 'P',
@@ -88,7 +88,6 @@ void	check_map(t_game *game);
 char	*get_next_line(int fd);
 char	**put_line_to_map(t_game *game, char *line);
 void	init(t_param *param);
-
-
+void	paint_game(t_param *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:36:09 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 03:51:38 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 19:48:29 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	main(int argc, char **argv)
 	init(param);
 	parse_map(param->game, map_path);
 	check_map(param->game);
+	paint_game(param);
+	mlx_loop(param->mlx);
 	return (0);
 }

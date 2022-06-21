@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:33:41 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 05:05:34 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 19:54:38 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,21 @@ void	parse_map(t_game *game, char *path)
 	while (line)
 	{
 		if (*line == '\n')
+		{
+			printf("\nERROR : TO MAY NEW LINE\n");
 			error_handler(ERROR_MAP_PARSING);
+		}
 		temp = ft_strjoin(buf, line);
 		free(line);
+		free(buf);
 		if (!temp)
 			error_handler(ERROR_MAP_PARSING);
-		free(buf);
 		buf = temp;
 		line = get_next_line(fd);
 	}
 	game->map = ft_split(buf, '\n');
 	free(buf);
-	if (!game->map)
+	if (!(game->map[0]))
 		error_handler(ERROR_MAP_PARSING);
 }
 
@@ -54,8 +57,11 @@ void	tile_handler(t_game *game, t_tile tile, int c_idx, int r_idx)
 	}
 	else if (tile == TILE_ENTRANCE)
 		game->entrance++;
-	else if (tile != TILE_BLANK && tile != TILE_WALL)
+	else if (tile != TILE_LAND && tile != TILE_WALL)
+	{
+		printf("\nERROR : TO MAY NEW LINE\n");
 		error_handler(ERROR_MAP_PARSING);
+	}
 }
 
 void	row_checker(t_game *game, int c_idx, int is_wall)
@@ -67,7 +73,10 @@ void	row_checker(t_game *game, int c_idx, int is_wall)
 	{
 		while (game->map[c_idx][r_idx] != '\0')
 			if (game->map[c_idx][r_idx++] != TILE_WALL)
+			{
+				printf("\nERROR : WALL si bal\n");
 				error_handler(ERROR_MAP_PARSING);
+			}
 	}
 	else
 	{
@@ -76,7 +85,10 @@ void	row_checker(t_game *game, int c_idx, int is_wall)
 			if (r_idx == 0 || r_idx == game->map_width - 1)
 			{
 				if (game->map[c_idx][r_idx] != TILE_WALL)
+				{
+					printf("\nERROR : WALL si bal\n");
 					error_handler(ERROR_MAP_PARSING);
+				}
 			}
 			else
 				tile_handler(game, game->map[c_idx][r_idx], c_idx, r_idx);
@@ -84,7 +96,10 @@ void	row_checker(t_game *game, int c_idx, int is_wall)
 		}
 	}
 	if (r_idx != game->map_width)
+	{
+		printf("\nERROR : MAP IS NOT RECTANGLE\n");
 		error_handler(ERROR_MAP_PARSING);
+	}
 }
 
 void	column_checker(t_game *game)
@@ -120,9 +135,14 @@ void	check_map(t_game *game)
 		;
 	game->map_height = i - 1;
 	column_checker(game);
-	printf("collection : %d", game->collection);
+	printf("\ncollection : %d\n", game->collection);
+	printf("\nplayer : %d\n", game->player);
+	printf("\nentrance : %d\n", game->entrance);
 	if (!(game->collection > 0 && game->entrance > 0 && game->player == 1))
+	{
+		printf("\nERROR : minimum condition\n");
 		error_handler(ERROR_MAP_PARSING);
+	}
 }
 
 // 방금 읽었은거
