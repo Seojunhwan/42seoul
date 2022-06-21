@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:33:41 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 19:54:38 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 23:24:25 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	tile_handler(t_game *game, t_tile tile, int c_idx, int r_idx)
 		printf("\nERROR : TO MAY NEW LINE\n");
 		error_handler(ERROR_MAP_PARSING);
 	}
+	printf("\npos row :%d\npos col : %d\n", game->pos.row, game->pos.col);
 }
 
 void	row_checker(t_game *game, int c_idx, int is_wall)

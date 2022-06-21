@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:33:48 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 19:42:41 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 22:55:58 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef enum e_list_of_key_code
 {
 	KEY_W = 13,
 	KEY_S = 1,
-	KEW_A = 0,
+	KEY_A = 0,
 	KEY_D = 2,
 	KEY_ESC = 53,
 	X_EVENT_KEY_PRESS = 2,
@@ -89,5 +89,8 @@ char	*get_next_line(int fd);
 char	**put_line_to_map(t_game *game, char *line);
 void	init(t_param *param);
 void	paint_game(t_param *param);
+int		handle_key_down(int key_code, t_param *param);
+int		handle_exit_game(t_param *param);
+void	temp_paint(t_param *param);
 
 #endif

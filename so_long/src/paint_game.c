@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 19:44:24 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/21 22:50:37 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	paint_elements(t_param *param, int row)
 	}
 }
 
+void	temp_paint(t_param *param)
+{
+	int	i;
+
+	i = 0;
+	while (i < param->game->map_height)
+	{
+		paint_elements(param, i);
+		i++;
+	}
+}
+
 void	paint_game(t_param *param)
 {
 	int	size_x;
@@ -76,9 +88,5 @@ void	paint_game(t_param *param)
 		printf("FAILED GEN WINDOW");
 		exit(1);
 	}
-	while (i < param->game->map_height)
-	{
-		paint_elements(param, i);
-		i++;
-	}
+	temp_paint(param);
 }
