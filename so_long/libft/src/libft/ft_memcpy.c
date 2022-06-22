@@ -6,12 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:36:05 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 21:58:13 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/22 22:51:40 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
-
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

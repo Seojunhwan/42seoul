@@ -6,12 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 15:32:25 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 21:58:13 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/22 22:51:30 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
-
 
 t_list	*ft_lstnew(void *content)
 {
