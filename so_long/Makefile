@@ -6,55 +6,49 @@
 #    By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 15:10:46 by junseo            #+#    #+#              #
-#    Updated: 2022/06/15 15:52:40 by junseo           ###   ########.fr        #
+#    Updated: 2022/06/22 22:47:10 by junseo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLIENT = client
+NAME			=	so_long
 
-BONUS_PATH = ./bonus
+LIBFTGNL_DIR	=	./libft
+MLX_DIR			=	./mlx
 
-SRCS = client.c \
-		send_utils.c \
-		utils.c \
-		utils2.c \
+SRCS			=	src/init.c	\
+					src/map.c	\
+					src/map2.c	\
+					src/move.c	\
+					src/paint_game.c	\
+					src/so_long.c	\
+					src/utils.c	
 
-BONUS_SRCS = ${BONUS_PATH}/client_bonus.c \
-		${BONUS_PATH}/send_utils_bonus.c \
-		${BONUS_PATH}/utils_bonus.c \
-		${BONUS_PATH}/utils2_bonus.c \
+OBJS			=	$(SRCS:.c=.o)
+CLIB			=	-L$(MLX_DIR) -lmlx -L$(LIBFTGNL_DIR) -lftgnl \
+					-framework OpenGL -framework AppKit
 
-OBJS_CLIENT = ${SRCS:.c=.o}
-OBJS_CLIENT_BONUS = ${BONUS_SRCS:.c=.o}
+CC				=	cc
+CFLAGS			=	-Wall -Wextra -Werror
+RM				=	rm -rf
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
+all:			$(NAME)
 
-ifdef BONUS
-	OBJECTS = $(OBJS_CLIENT_BONUS)
-	HEADER_PATH = ./bonus
-else
-	OBJECTS = $(OBJS_CLIENT)
-	HEADER_PATH = ./
-endif
-
-all: ${CLIENT}
-
-${CLIENT}: ${OBJECTS}
-	${CC} ${CFLAGS} ${OBJECTS} -o ${CLIENT} -I ${HEADER_PATH}
-
-bonus: 
-	make BONUS=1 all
+$(NAME):		$(OBJS)
+				$(MAKE) -C $(LIBFTGNL_DIR)
+				$(MAKE) -C $(MLX_DIR)
+				$(CC) $(CFLAGS) $(CLIB) $(OBJS) -o $(NAME)
 
 clean:
-	${RM} ${OBJS_CLIENT} ${OBJS_CLIENT_BONUS}
+				$(MAKE) clean -C $(LIBFTGNL_DIR)
+				$(MAKE) clean -C $(MLX_DIR)
+				$(RM) $(OBJS)
 
-fclean: clean
-	${RM} ${CLIENT}
+fclean: 		clean
+				$(MAKE) fclean -C $(LIBFTGNL_DIR)
+				$(RM) $(NAME)
 
 re: 
 	make fclean
 	make all
 
-.PHONY: clean fclean re all bonus
+.PHONY: clean fclean re all

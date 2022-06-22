@@ -6,11 +6,11 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 22:50:37 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/22 22:42:22 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	paint_img(t_param *param, char *path, int row, int col)
 {
@@ -34,7 +34,12 @@ void	paint_element(t_param *param, char tile, int row, int col)
 	if (tile == TILE_COLLECTION)
 		paint_img(param, "./assets/collection.xpm", row, col);
 	else if (tile == TILE_ENTRANCE)
-		paint_img(param, "./assets/exit_close.xpm", row, col);
+	{
+		if (param->game->is_possible_exit)
+			paint_img(param, "./assets/exit_open.xpm", row, col);
+		else
+			paint_img(param, "./assets/exit_close.xpm", row, col);
+	}
 	else if (tile == TILE_PLAYER)
 		paint_img(param, "./assets/player.xpm", row, col);
 	else if (tile == TILE_WALL)

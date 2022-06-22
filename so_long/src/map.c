@@ -6,11 +6,12 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:33:41 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/21 23:24:25 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/22 22:48:56 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
+#include "../libft/includes/get_next_line.h"
 
 void	parse_map(t_game *game, char *path)
 {
@@ -19,33 +20,28 @@ void	parse_map(t_game *game, char *path)
 	char	*temp;
 	int		fd;
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		error_handler(ERROR_MAP_PARSING);
+	fd = open_map(path);
 	buf = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (*line == '\n')
-		{
-			printf("\nERROR : TO MAY NEW LINE\n");
-			error_handler(ERROR_MAP_PARSING);
-		}
+			error_handler("Found too many new line");
 		temp = ft_strjoin(buf, line);
-		free(line);
 		free(buf);
+		free(line);
 		if (!temp)
-			error_handler(ERROR_MAP_PARSING);
+			error_handler("Map parsing error");
 		buf = temp;
 		line = get_next_line(fd);
 	}
 	game->map = ft_split(buf, '\n');
 	free(buf);
 	if (!(game->map[0]))
-		error_handler(ERROR_MAP_PARSING);
+		error_handler("Map is empty");
 }
 
-void	tile_handler(t_game *game, t_tile tile, int c_idx, int r_idx)
+void	tile_handler(t_game *game, t_tile tile, int r_idx, int c_idx)
 {
 	if (tile == TILE_COLLECTION)
 		game->collection++;
@@ -58,71 +54,54 @@ void	tile_handler(t_game *game, t_tile tile, int c_idx, int r_idx)
 	else if (tile == TILE_ENTRANCE)
 		game->entrance++;
 	else if (tile != TILE_LAND && tile != TILE_WALL)
-	{
-		printf("\nERROR : TO MAY NEW LINE\n");
-		error_handler(ERROR_MAP_PARSING);
-	}
-	printf("\npos row :%d\npos col : %d\n", game->pos.row, game->pos.col);
+		error_handler("Please check your map file : TileCode");
 }
 
-void	row_checker(t_game *game, int c_idx, int is_wall)
+void	column_checker(t_game *game, int r_idx, int is_wall)
 {
-	int	r_idx;
+	int	c_idx;
 
-	r_idx = 0;
+	c_idx = 0;
 	if (is_wall)
 	{
-		while (game->map[c_idx][r_idx] != '\0')
-			if (game->map[c_idx][r_idx++] != TILE_WALL)
-			{
-				printf("\nERROR : WALL si bal\n");
-				error_handler(ERROR_MAP_PARSING);
-			}
+		while (game->map[r_idx][c_idx] != '\0')
+			if (game->map[r_idx][c_idx++] != TILE_WALL)
+				error_handler("Please check your map file : Wall");
 	}
 	else
 	{
-		while (game->map[c_idx][r_idx] != '\0')
+		while (game->map[r_idx][c_idx] != '\0')
 		{
-			if (r_idx == 0 || r_idx == game->map_width - 1)
+			if (c_idx == 0 || c_idx == game->map_width - 1)
 			{
-				if (game->map[c_idx][r_idx] != TILE_WALL)
-				{
-					printf("\nERROR : WALL si bal\n");
-					error_handler(ERROR_MAP_PARSING);
-				}
+				if (game->map[r_idx][c_idx] != TILE_WALL)
+					error_handler("Please check your map file : Wall");
 			}
 			else
-				tile_handler(game, game->map[c_idx][r_idx], c_idx, r_idx);
-		r_idx++;
+				tile_handler(game, game->map[r_idx][c_idx], r_idx, c_idx);
+		c_idx++;
 		}
 	}
-	if (r_idx != game->map_width)
-	{
-		printf("\nERROR : MAP IS NOT RECTANGLE\n");
-		error_handler(ERROR_MAP_PARSING);
-	}
+	if (c_idx != game->map_width)
+		error_handler("Map is not rectangle");
 }
 
-void	column_checker(t_game *game)
+void	row_checker(t_game *game)
 {
-	int	column_index;
+	int	row_index;
 	int	i;
 
 	i = 0;
-	column_index = 0;
-	printf("\n%d %d\n", column_index, game->map_height);
+	row_index = 0;
 	while (game->map[i] != NULL)
-	{
-		printf("%s\n", game->map[i]);
 		i++;
-	}
-	while (column_index < (game->map_height))
+	while (row_index < (game->map_height))
 	{
-		if (column_index == 0 || column_index == (game->map_height) - 1)
-			row_checker(game, column_index, 1);
+		if (row_index == 0 || row_index == (game->map_height) - 1)
+			column_checker(game, row_index, 1);
 		else
-			row_checker(game, column_index, 0);
-		column_index++;
+			column_checker(game, row_index, 0);
+		row_index++;
 	}
 }
 
@@ -135,31 +114,7 @@ void	check_map(t_game *game)
 	while ((game->map[i++]) != NULL)
 		;
 	game->map_height = i - 1;
-	column_checker(game);
-	printf("\ncollection : %d\n", game->collection);
-	printf("\nplayer : %d\n", game->player);
-	printf("\nentrance : %d\n", game->entrance);
+	row_checker(game);
 	if (!(game->collection > 0 && game->entrance > 0 && game->player == 1))
-	{
-		printf("\nERROR : minimum condition\n");
-		error_handler(ERROR_MAP_PARSING);
-	}
+		error_handler("Minimum condition was not met");
 }
-
-// 방금 읽었은거
-
-// 2차원 배열
-// [
-// 	['a','a','a','a','a','a','a'],
-// 	['b','b','b','b','b','b','b'],
-// 	['c','c','c','c','c','c','c'],
-// 	['d','d','d','d','d','d','d'],
-//	 NULL
-// ]
-
-// i 2차원 배열 내부의 1차원 배열의 갯수
-// 2차원 배열을 재할당하구
-// 기존 2차원 배열 내부의 1차원 배열들의 주소를 붙여넣구
-// 기존 2차원 배열은 free 해주고!
-// 방금 들어온 1차원 배열의 주소를 마지막에 넣어주고
-// 리턴하면 끝
