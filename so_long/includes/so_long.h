@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:33:48 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 22:41:05 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:38:06 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ void	error_handler(char *reason);
 void	argument_checker(int argc, char *argv);
 void	parse_map(t_game *game, char *map_path);
 void	check_map(t_game *game);
-char	*get_next_line(int fd);
 void	init(t_param *param);
 void	paint_game(t_param *param);
+void	print_move_count(int count);
+void	call_paint_elements(t_param *param);
+char	*get_next_line(int fd);
 int		open_map(char *path);
 int		handle_key_down(int key_code, t_param *param);
 int		handle_force_exit_game(t_param *param);
 int		handle_complete_game(t_param *param);
-void	print_move_count(int count);
-void	temp_paint(t_param *param);
 
 #endif

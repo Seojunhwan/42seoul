@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 22:20:33 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 22:43:49 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:38:06 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int	handle_key_down(int keycode, t_param *param)
 		handle_force_exit_game(param);
 	if (param->game->collection == 0)
 		param->game->is_possible_exit = 1;
-	temp_paint(param);
+	call_paint_elements(param);
 	if (before_count != param->game->move_count)
 		print_move_count(param->game->move_count);
 	if (param->game->is_done)

@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/23 17:02:47 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:41:04 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	paint_img(t_param *param, char *path, int row, int col)
 
 	image = mlx_xpm_file_to_image(param->mlx, path, &width, &height);
 	if (!image)
-	{
-		printf("failed gen image");
-		exit(1);
-	}
+		error_handler("image gen failed!");
 	mlx_put_image_to_window(param->mlx, param->win, image,
 		col * IMG_SIZE, row * IMG_SIZE);
 	mlx_destroy_image(param->mlx, image);
@@ -61,7 +58,7 @@ void	paint_elements(t_param *param, int row)
 	}
 }
 
-void	temp_paint(t_param *param)
+void	call_paint_elements(t_param *param)
 {
 	int	i;
 
@@ -82,15 +79,9 @@ void	paint_game(t_param *param)
 	size_y = param->game->map_height * IMG_SIZE;
 	param->mlx = mlx_init();
 	if (!param->mlx)
-	{
-		printf("MLX INIT FAILED");
-		exit(1);
-	}
+		error_handler("mlx init failed");
 	param->win = mlx_new_window(param->mlx, size_x, size_y, "Junseo");
 	if (!(param->win))
-	{
-		printf("FAILED GEN WINDOW");
-		exit(1);
-	}
-	temp_paint(param);
+		error_handler("window gen failed");
+	call_paint_elements(param);
 }

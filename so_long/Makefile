@@ -6,7 +6,7 @@
 #    By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 15:10:46 by junseo            #+#    #+#              #
-#    Updated: 2022/06/22 22:53:34 by junseo           ###   ########.fr        #
+#    Updated: 2022/06/23 21:01:41 by junseo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CLIB			=	-L$(MLX_DIR) -lmlx -L$(LIBFTGNL_DIR) -lftgnl \
 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
-RM				=	rm -rf
+RM				=	rm -f
 
 all:			$(NAME)
 
