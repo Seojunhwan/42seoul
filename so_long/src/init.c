@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:03:04 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 22:44:32 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 14:01:34 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init(t_param *param)
 	param->game = (t_game *)malloc(sizeof(t_game));
 	if (!(param->game))
 		error_handler("Game Malloc Failed");
-	param->game->map = (char **)malloc(sizeof(char *) + 1);
+	param->game->map = (char **)malloc(sizeof(char *) * 2);
 	param->game->map[1] = NULL;
 	if (!(param->game->map))
 		error_handler("Map Malloc Failed");

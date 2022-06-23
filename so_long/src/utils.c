@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:55:15 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 22:44:49 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 17:09:59 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	handle_force_exit_game(t_param *param)
 {
 	printf("END\n");
 	handle_exit_game(param);
-	exit(0);
+	return (0);
 }
 
 int	handle_complete_game(t_param *param)
 {
 	printf("COMPLETE\n");
 	handle_exit_game(param);
-	exit(0);
+	return (0);
 }
 
 void	print_move_count(int count)

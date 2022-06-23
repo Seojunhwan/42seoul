@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:02 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/22 22:42:22 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/23 17:02:47 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	paint_img(t_param *param, char *path, int row, int col)
 	}
 	mlx_put_image_to_window(param->mlx, param->win, image,
 		col * IMG_SIZE, row * IMG_SIZE);
+	mlx_destroy_image(param->mlx, image);
 }
 
 void	paint_element(t_param *param, char tile, int row, int col)
@@ -76,9 +77,7 @@ void	paint_game(t_param *param)
 {
 	int	size_x;
 	int	size_y;
-	int	i;
 
-	i = 0;
 	size_x = param->game->map_width * IMG_SIZE;
 	size_y = param->game->map_height * IMG_SIZE;
 	param->mlx = mlx_init();
