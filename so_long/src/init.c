@@ -6,7 +6,7 @@
 /*   By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:03:04 by junseo            #+#    #+#             */
-/*   Updated: 2022/06/23 21:25:22 by junseo           ###   ########.fr       */
+/*   Updated: 2022/06/24 09:42:19 by junseo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	argument_checker(int argc, char *argv)
 	if (argc != 2)
 		error_handler("Please check your arguments");
 	map_path = ft_strrchr(argv, '.');
-	if ((map_path[0] != '.' || map_path[1] != 'b' || map_path[2] != 'e'
-			|| map_path[3] != 'r' || map_path[4] != '\0'))
+	if (!map_path || (map_path[0] != '.' || map_path[1] != 'b'
+			|| map_path[2] != 'e' || map_path[3] != 'r' || map_path[4] != '\0'))
 		error_handler("Please check your filename");
 }

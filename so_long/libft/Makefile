@@ -6,7 +6,7 @@
 #    By: junseo <junseo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 21:48:39 by junseo            #+#    #+#              #
-#    Updated: 2022/06/23 21:02:10 by junseo           ###   ########.fr        #
+#    Updated: 2022/06/24 09:41:31 by junseo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ NAME	= libftgnl.a
 LIBFT_DIR	=	src/libft
 GNL_DIR		=	src/get_next_line
 
-SRCS	= 	$(GNL_DIR)/get_next_line.c \
-			$(GNL_DIR)/get_next_line_utils.c
+SRCS	= 	$(GNL_DIR)/get_next_line.c
 
 OBJS	= $(SRCS:.c=.o)
 
